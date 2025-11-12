@@ -10,6 +10,8 @@ import MyHabits from './Components/MyHabits/MyHabits.jsx';
 import AddHabits from './AddHabits/Addhabits.jsx';
 import PublicHabit from './Components/PublicHabits/PublicHabit.jsx';
 import AuthProvider from './Context/AuthProvider.jsx';
+import Register from './Components/Register/Register.jsx';
+import Login from './Components/Login/Login.jsx';
 
 const router = createBrowserRouter([
 	{
@@ -22,16 +24,28 @@ const router = createBrowserRouter([
 			},
 			{
 				path: 'myHabits',
-				Component: MyHabits,
+				// Component: MyHabits,
+        element: <MyHabits></MyHabits>
+
 			},
 			{
 				path: 'addHabits',
-				Component: AddHabits,
+				// Component: AddHabits,
+        element: <AddHabits></AddHabits>
+
 			},
 			{
 				path: 'publicHabits',
         Component:PublicHabit
-			}
+			},
+      {
+        path: 'auth/register',
+        Component:Register
+      },
+      {
+        path: 'auth/login',
+        Component: Login
+      },
 		],
 	},
 ]);
