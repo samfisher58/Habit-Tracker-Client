@@ -12,6 +12,7 @@ import PublicHabit from './Components/PublicHabits/PublicHabit.jsx';
 import AuthProvider from './Context/AuthProvider.jsx';
 import Register from './Components/Register/Register.jsx';
 import Login from './Components/Login/Login.jsx';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute.jsx';
 
 const router = createBrowserRouter([
 	{
@@ -25,27 +26,33 @@ const router = createBrowserRouter([
 			{
 				path: 'myHabits',
 				// Component: MyHabits,
-        element: <MyHabits></MyHabits>
-
+				element: (
+					<PrivateRoute>
+						<MyHabits></MyHabits>
+					</PrivateRoute>
+				),
 			},
 			{
 				path: 'addHabits',
 				// Component: AddHabits,
-        element: <AddHabits></AddHabits>
-
+				element: (
+					<PrivateRoute>
+						<AddHabits></AddHabits>
+					</PrivateRoute>
+				),
 			},
 			{
 				path: 'publicHabits',
-        Component:PublicHabit
+				Component: PublicHabit,
 			},
-      {
-        path: 'auth/register',
-        Component:Register
-      },
-      {
-        path: 'auth/login',
-        Component: Login
-      },
+			{
+				path: 'auth/register',
+				Component: Register,
+			},
+			{
+				path: 'auth/login',
+				Component: Login,
+			},
 		],
 	},
 ]);

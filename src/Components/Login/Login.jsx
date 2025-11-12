@@ -34,6 +34,7 @@ const Login = () => {
 		signInUser(email, password)
 			.then(() => {
 				navigate(location.state ? location.state : '/');
+                alert('Login Successful')
 			})
 			.catch(err => setError(err.code));
 	

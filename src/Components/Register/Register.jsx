@@ -5,7 +5,8 @@ import { AuthContext } from '../../Context/AuthContext';
 
 const Register = () => {
 	const navigate = useNavigate();
-	const { createUser, setUser, signInWithGoogle,updateUser } = use(AuthContext);
+	const { createUser, setUser, signInWithGoogle, updateUser } =
+		use(AuthContext);
 	const validatePassword = pw => {
 		if (pw.length < 6) return 'Password must be at least 6 characters';
 		if (!/[A-Z]/.test(pw)) return 'Password must contain an uppercase letter';
@@ -13,15 +14,34 @@ const Register = () => {
 		return null;
 	};
 
-    const handleGoogleSignIn = ()=>{
-        signInWithGoogle()
-        .then(result=>{
-            console.log(result);
-        })
-        .catch(error=>{
-            console.log(error);
-        })
-    }
+	const handleGoogleSignIn = () => {
+		signInWithGoogle()
+			.then(result => {
+				console.log(result);
+				alert('Account created!');
+				navigate('/');
+				const newUser = {
+					name: result.user.displayName,
+					email: result.user.email,
+					image: result.user.photoURL,
+				};
+				// create user n db
+				fetch('http://localhost:3000/users', {
+					method: 'POST',
+					headers: {
+						'content-type': 'application/json',
+					},
+					body: JSON.stringify(newUser),
+				})
+					.then(res => res.json())
+					.then(data => {
+						console.log('data after user save', data);
+					});
+			})
+			.catch(error => {
+				console.log(error);
+			});
+	};
 
 	const handleRegister = e => {
 		e.preventDefault();
@@ -43,6 +63,22 @@ const Register = () => {
 				updateUser({ displayName: name, photoURL: photo })
 					.then(() => {
 						setUser({ ...user, displayName: name, photoURL: photo });
+						const newUser = {
+							name: name,
+							email: email,
+							image: photo,
+						};
+						fetch('http://localhost:3000/users', {
+							method: 'POST',
+							headers: {
+								'content-type': 'application/json',
+							},
+							body: JSON.stringify(newUser),
+						})
+							.then(res => res.json())
+							.then(data => {
+								console.log('data after user save', data);
+							});
 						alert('Account created!');
 						navigate('/');
 					})
@@ -116,10 +152,15 @@ const Register = () => {
 						<button type="submit" className="btn btn-primary mt-4">
 							Register
 						</button>
-                        <p className='text-center font-bold'>OR <br /></p>
+						<p className="text-center font-bold">
+							OR <br />
+						</p>
 
 						{/* Google */}
-						<button onClick={handleGoogleSignIn} className="btn bg-white text-black border-[#e5e5e5]">
+						<button
+							onClick={handleGoogleSignIn}
+							className="btn bg-white text-black border-[#e5e5e5]"
+						>
 							<svg
 								aria-label="Google logo"
 								width="16"
