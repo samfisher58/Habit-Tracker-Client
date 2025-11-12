@@ -14,6 +14,7 @@ import Register from './Components/Register/Register.jsx';
 import Login from './Components/Login/Login.jsx';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute.jsx';
 import HabitDetails from './Components/HabitDetails/habitDetails.jsx';
+import PublicHabitDetails from './Components/HabitDetails/PublicHabitDetails.jsx';
 
 const router = createBrowserRouter([
 	{
@@ -56,12 +57,19 @@ const router = createBrowserRouter([
 			},
 			{
 				path: 'habitDetails/:id',
-				loader: ({ params }) => fetch(`http://localhost:3000/habits/${params.id}`),
+				loader: ({ params }) =>
+					fetch(`http://localhost:3000/habits/${params.id}`),
 				element: (
 					<PrivateRoute>
 						<HabitDetails></HabitDetails>
 					</PrivateRoute>
 				),
+			},
+			{
+				path: 'publicHabit/:id',
+				loader: ({ params }) =>
+					fetch(`http://localhost:3000/publicHabits/${params.id}`),
+				element: <PrivateRoute><PublicHabitDetails></PublicHabitDetails> </PrivateRoute>,
 			},
 		],
 	},

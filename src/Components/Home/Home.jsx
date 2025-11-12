@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import LatestHabits from '../../LatestHabits/LatestHabits';
-const latestProductPromise = fetch('http://localhost:3000/latest-habits').then(
+import Loading from '../Loading/Loading';
+const latestHabitPromise = fetch('http://localhost:3000/latest-habits').then(
 	res => res.json()
 );
 const Home = () => {
     return (
-			<div>				
-					<LatestHabits
-						latestProductPromise={latestProductPromise}
-					></LatestHabits>				
+			<div>
+				<Suspense fallback={<Loading></Loading>}>
+					<LatestHabits latestHabitPromise={latestHabitPromise}></LatestHabits>
+				</Suspense>
 			</div>
 		);
 };

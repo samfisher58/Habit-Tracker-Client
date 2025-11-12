@@ -1,8 +1,8 @@
 import React, { use } from 'react';
 import LatestHabit from './LatestHabit';
 
-const LatestHabits = ({ latestProductPromise }) => {
-	const latestHabits = use(latestProductPromise);
+const LatestHabits = ({ latestHabitPromise }) => {
+	const latestHabits = use(latestHabitPromise);
 	console.log(latestHabits);
 	return (
 		<div>
