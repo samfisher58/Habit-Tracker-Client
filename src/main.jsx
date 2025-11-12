@@ -13,6 +13,7 @@ import AuthProvider from './Context/AuthProvider.jsx';
 import Register from './Components/Register/Register.jsx';
 import Login from './Components/Login/Login.jsx';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute.jsx';
+import HabitDetails from './Components/HabitDetails/habitDetails.jsx';
 
 const router = createBrowserRouter([
 	{
@@ -52,6 +53,15 @@ const router = createBrowserRouter([
 			{
 				path: 'auth/login',
 				Component: Login,
+			},
+			{
+				path: 'habitDetails/:id',
+				loader: ({ params }) => fetch(`http://localhost:3000/habits/${params.id}`),
+				element: (
+					<PrivateRoute>
+						<HabitDetails></HabitDetails>
+					</PrivateRoute>
+				),
 			},
 		],
 	},

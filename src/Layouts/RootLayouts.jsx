@@ -4,12 +4,11 @@ import Navbar from '../Components/Navbar/Navbar';
 
 const RootLayouts = () => {
     return (
-        <div>
-            <Navbar></Navbar>
-            <Outlet></Outlet>
-            
-        </div>
-    );
+			<div className="w-11/12 mx-auto">
+				<Navbar></Navbar>
+				<Outlet></Outlet>
+			</div>
+		);
 };
 
 export default RootLayouts;
