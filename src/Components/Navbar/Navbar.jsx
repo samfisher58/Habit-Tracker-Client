@@ -1,4 +1,4 @@
-import React, {  useContext } from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 
@@ -97,7 +97,10 @@ const Navbar = () => {
 								<li className="font-semibold">{user.displayName}</li>
 								<li className="text-sm text-gray-500">{user.email}</li>
 								<li>
-									<button onClick={handleLogOut} className="btn btn-primary btn-sm mt-2">
+									<button
+										onClick={handleLogOut}
+										className="btn btn-primary btn-sm mt-2"
+									>
 										Log out
 									</button>
 								</li>

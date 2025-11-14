@@ -1,45 +1,13 @@
 import React from 'react';
 import { AuthContext } from '../../Context/AuthContext';
 import { use } from 'react';
+import Swal from 'sweetalert2';
 
 const AddHabits = () => {
 	const { user } = use(AuthContext);
 	console.log(user);
 	const handleSubmit = e => {
 		e.preventDefault();
-
-		// id
-		// 6914bd9690a43876ec7e544e
-		// title
-		// "Read a Book"
-		// description
-		// "Read at least 20 pages of any book daily."
-		// category
-		// "Education"
-		// reminderTime
-		// "20:00"
-		// image
-		// "https://i.ibb.co.com/3m4QQfXd/christin-hume-k2-Kcwkandwg-unsplash.jpg"
-
-		// user
-		// Object
-		// name
-		// "Saymon Islam"
-		// email
-		// "saymon3@example.com"
-
-		// progress
-		// Object
-
-		// completionHistory
-		// Array (1)
-		// currentStreak
-		// 1
-		// bestStreak
-		// 3
-		// createdAt
-		// "2025-11-01T20:00:00.000Z"
-
 		const formData = {
 			title: e.target.title.value,
 			description: e.target.description.value,
@@ -69,11 +37,15 @@ const AddHabits = () => {
 			.then(res => res.json())
 			.then(data => {
 				console.log(data);
-				alert('habit added successfully');
+				Swal.fire({
+					title: 'Habit added successfully',
+					icon: 'success',
+					draggable: true,
+				});
 			})
 			.catch(err => {
 				console.log(err);
-				alert(err);
+				
 			});
 	};
 
@@ -90,6 +62,7 @@ const AddHabits = () => {
 						placeholder="Enter habit title"
 						name="title"
 						className="input input-bordered w-full"
+						required
 					/>
 				</div>
 
@@ -100,14 +73,19 @@ const AddHabits = () => {
 						placeholder="Write a short description"
 						className="textarea textarea-bordered w-full"
 						name="description"
+						required
 					></textarea>
 				</div>
 
 				{/* Category */}
 				<div>
 					<label className="label font-medium">Category</label>
-					<select name="category" className="select select-bordered w-full">
-						<option disabled selected>
+					<select
+						name="category"
+						required
+						className="select select-bordered w-full"
+					>
+						<option >
 							Select a category
 						</option>
 						<option>Morning</option>
@@ -125,6 +103,7 @@ const AddHabits = () => {
 						type="time"
 						name="reminderTime"
 						className="input input-bordered w-full"
+						required
 					/>
 				</div>
 
@@ -136,6 +115,7 @@ const AddHabits = () => {
 						name="image"
 						placeholder="Enter Image URL"
 						className="input input-bordered w-full"
+						required
 					/>
 				</div>
 
@@ -159,6 +139,7 @@ const AddHabits = () => {
 							name="email"
 							defaultValue={user.email}
 							className="input input-bordered w-full bg-gray-100"
+							
 						/>
 					</div>
 				</div>

@@ -6,7 +6,6 @@ import { RouterProvider } from 'react-router/dom';
 import RootLayouts from './Layouts/RootLayouts.jsx';
 import Home from './Components/Home/Home.jsx';
 import MyHabits from './Components/MyHabits/MyHabits.jsx';
-import AddHabits from './Components/AddHabits/Addhabits.jsx';
 import PublicHabit from './Components/PublicHabits/PublicHabit.jsx';
 import AuthProvider from './Context/AuthProvider.jsx';
 import Register from './Components/Register/Register.jsx';
@@ -14,6 +13,7 @@ import Login from './Components/Login/Login.jsx';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute.jsx';
 import HabitDetails from './Components/HabitDetails/habitDetails.jsx';
 import PublicHabitDetails from './Components/HabitDetails/PublicHabitDetails.jsx';
+import AddHabits from './Components/AddHabits/AddHabits.jsx';
 
 const router = createBrowserRouter([
 	{
