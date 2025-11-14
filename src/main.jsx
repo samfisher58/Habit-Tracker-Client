@@ -15,6 +15,7 @@ import HabitDetails from './Components/HabitDetails/habitDetails.jsx';
 import PublicHabitDetails from './Components/HabitDetails/PublicHabitDetails.jsx';
 import AddHabits from './Components/AddHabits/AddHabits.jsx';
 
+
 const router = createBrowserRouter([
 	{
 		path: '/',
@@ -83,5 +84,8 @@ createRoot(document.getElementById('root')).render(
 		<AuthProvider>
 			<RouterProvider router={router} />,
 		</AuthProvider>
+
+		
+
 	</StrictMode>
 );

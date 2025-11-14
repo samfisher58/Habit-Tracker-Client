@@ -4,7 +4,7 @@ import Loading from '../Loading/Loading';
 const publicHabitPromise = fetch('http://localhost:3000/publicHabits').then(
 	res => res.json()
 );
-console.log(publicHabitPromise);
+
 
 const PublicHabit = () => {
     return (

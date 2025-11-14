@@ -1,24 +1,25 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router';
+import Swal from 'sweetalert2';
 
 const PublicHabitDetails = () => {
     const habit = useLoaderData();
-		console.log(habit);
-		const { title, description, image, category, user, progress } = habit;
+		
+		const { _id,title, description, image, category, user, progress } = habit;
 		const totalDays = 30;
 		const completedDays = progress.completionHistory.length;
 		const progressPercent = Math.min((completedDays / totalDays) * 100, 100);
 
 		const handleComplete = async () => {
-			const res = await fetch(
-				`http://localhost:3000/habits/${habit._id}/complete`,
-				{
-					method: 'PATCH',
-					headers: { 'Content-Type': 'application/json' },
-				}
-			);
+			const res = await fetch(`http://localhost:3000/habits/${_id}/complete`, {
+				method: 'PATCH',
+				headers: { 'Content-Type': 'application/json' },
+			});
 			const data = await res.json();
+			console.log(data)
 			alert(data.message || 'Completed!');
+			
+
 		};
 		return (
 			<div className=" bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
