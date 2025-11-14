@@ -1,13 +1,12 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import './index.css';
 import { createBrowserRouter } from 'react-router';
 import { RouterProvider } from 'react-router/dom';
 import RootLayouts from './Layouts/RootLayouts.jsx';
 import Home from './Components/Home/Home.jsx';
 import MyHabits from './Components/MyHabits/MyHabits.jsx';
-import AddHabits from './AddHabits/Addhabits.jsx';
+import AddHabits from './Components/AddHabits/Addhabits.jsx';
 import PublicHabit from './Components/PublicHabits/PublicHabit.jsx';
 import AuthProvider from './Context/AuthProvider.jsx';
 import Register from './Components/Register/Register.jsx';
@@ -69,7 +68,11 @@ const router = createBrowserRouter([
 				path: 'publicHabit/:id',
 				loader: ({ params }) =>
 					fetch(`http://localhost:3000/publicHabits/${params.id}`),
-				element: <PrivateRoute><PublicHabitDetails></PublicHabitDetails> </PrivateRoute>,
+				element: (
+					<PrivateRoute>
+						<PublicHabitDetails></PublicHabitDetails>{' '}
+					</PrivateRoute>
+				),
 			},
 		],
 	},
