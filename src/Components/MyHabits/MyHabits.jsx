@@ -1,6 +1,7 @@
 import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router';
 
 const MyHabits = () => {
 	const { user } = use(AuthContext);
@@ -99,7 +100,10 @@ const MyHabits = () => {
 								<td>
 									<div className="flex justify-end gap-3">
 										{/* Update Button */}
-										<button className="btn btn-sm btn-info">Update</button>
+										{/* <button className="btn btn-sm btn-info">Update</button> */}
+										<Link  to={`/myHabits/update-habits/${habit._id}`} className='btn btn-sm btn-primary'>
+											Update Habits
+										</Link>
 
 										{/* Delete Button */}
 										<button
