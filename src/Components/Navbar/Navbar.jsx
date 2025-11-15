@@ -1,5 +1,5 @@
 import React, { use } from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import { toast } from 'react-toastify';
 
@@ -22,11 +22,6 @@ const Navbar = () => {
 					Home
 				</NavLink>
 			</li>
-
-			<li>
-				<NavLink to="/publicHabits">Browse Public Habits</NavLink>
-			</li>
-
 			{user && (
 				<>
 					<li>
@@ -36,7 +31,12 @@ const Navbar = () => {
 						<NavLink to="/myHabits">My Habits</NavLink>
 					</li>
 				</>
+
 			)}
+
+			<li>
+				<NavLink to="/publicHabits">Browse Public Habits</NavLink>
+			</li>
 		</>
 	);
 
@@ -67,9 +67,9 @@ const Navbar = () => {
 						{links}
 					</ul>
 				</div>
-				<a className="btn btn-ghost text-xl">
-					Habit <span>Tracker</span>
-				</a>
+				<Link to="/" className="btn btn-ghost text-xl font-bold">
+					<span className='text-primary'>Habit</span> <span className="text-secondary">Tracker</span>
+				</Link>
 			</div>
 
 			<div className="navbar-center hidden lg:flex">

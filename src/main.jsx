@@ -15,12 +15,15 @@ import HabitDetails from './Components/HabitDetails/habitDetails.jsx';
 import PublicHabitDetails from './Components/HabitDetails/PublicHabitDetails.jsx';
 import AddHabits from './Components/AddHabits/AddHabits.jsx';
 import UpdateHabits from './Components/UpdateHabits/updateHabits.jsx';
+import Errorpage from './Components/Error/Errorpage.jsx';
+
 
 
 const router = createBrowserRouter([
 	{
 		path: '/',
 		Component: RootLayouts,
+		errorElement:<Errorpage></Errorpage>,
 		children: [
 			{
 				index: true,
@@ -28,7 +31,7 @@ const router = createBrowserRouter([
 			},
 			{
 				path: 'myHabits',
-				// Component: MyHabits,
+				
 				element: (
 					<PrivateRoute>
 						<MyHabits></MyHabits>
@@ -37,7 +40,7 @@ const router = createBrowserRouter([
 			},
 			{
 				path: 'addHabits',
-				// Component: AddHabits,
+				
 				element: (
 					<PrivateRoute>
 						<AddHabits></AddHabits>
@@ -87,6 +90,7 @@ const router = createBrowserRouter([
 				),
 			},
 		],
+		
 	},
 ]);
 
@@ -95,8 +99,5 @@ createRoot(document.getElementById('root')).render(
 		<AuthProvider>
 			<RouterProvider router={router} />,
 		</AuthProvider>
-
-		
-
 	</StrictMode>
 );
