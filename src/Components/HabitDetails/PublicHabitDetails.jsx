@@ -1,9 +1,9 @@
-import React from 'react';
 import { Link, useLoaderData } from 'react-router';
-import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
 
 const PublicHabitDetails = () => {
     const habit = useLoaderData();
+	
 		
 		const { _id,title, description, image, category, user, progress } = habit;
 		const totalDays = 30;
@@ -16,8 +16,8 @@ const PublicHabitDetails = () => {
 				headers: { 'Content-Type': 'application/json' },
 			});
 			const data = await res.json();
-			console.log(data)
-			alert(data.message || 'Completed!');
+			
+			toast(data.message || 'Completed!');
 			
 
 		};

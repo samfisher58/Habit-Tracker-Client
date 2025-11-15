@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const PublicHabitCard = ({ habit }) => {
-    console.log(habit);
+    
     const { _id, category, image, title, description, user } = habit;
 	return (
 		<div className="card bg-base-100 w-full max-w-sm sm:max-w-md md:max-w-lg shadow-sm">

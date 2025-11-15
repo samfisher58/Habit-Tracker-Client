@@ -2,6 +2,7 @@ import React, { use } from 'react';
 import { useNavigate } from 'react-router';
 import { NavLink } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
+import { toast } from 'react-toastify';
 
 const Register = () => {
 	const navigate = useNavigate();
@@ -17,8 +18,8 @@ const Register = () => {
 	const handleGoogleSignIn = () => {
 		signInWithGoogle()
 			.then(result => {
-				console.log(result);
-				alert('Account created!');
+				
+				toast('Account created!');
 				navigate('/');
 				const newUser = {
 					name: result.user.displayName,
@@ -34,12 +35,11 @@ const Register = () => {
 					body: JSON.stringify(newUser),
 				})
 					.then(res => res.json())
-					.then(data => {
-						console.log('data after user save', data);
+					.then(() => {						
 					});
 			})
-			.catch(error => {
-				console.log(error);
+			.catch(() => {
+				
 			});
 	};
 
@@ -53,7 +53,7 @@ const Register = () => {
 
 		const err = validatePassword(password);
 		if (err) {
-			alert(err);
+			toast.error(err);
 			return;
 		}
 
@@ -76,19 +76,19 @@ const Register = () => {
 							body: JSON.stringify(newUser),
 						})
 							.then(res => res.json())
-							.then(data => {
-								console.log('data after user save', data);
+							.then(() => {
+								
 							});
-						alert('Account created!');
+						toast.success('Account created!');
 						navigate('/');
 					})
-					.catch(err => {
-						console.error(err);
+					.catch(() => {						
 						setUser(user);
+						toast.error('Failed to update profile info');
 					});
 			})
 			.catch(err => {
-				alert(err.message);
+				toast.error(err.message);
 			});
 	};
 

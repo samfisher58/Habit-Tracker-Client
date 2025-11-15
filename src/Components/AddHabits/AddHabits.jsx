@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 
 const AddHabits = () => {
 	const { user } = use(AuthContext);
-	console.log(user);
+	
 	const handleSubmit = e => {
 		e.preventDefault();
 		const formData = {
@@ -26,7 +26,7 @@ const AddHabits = () => {
 				bestStreak: 0,
 			},
 		};
-		console.log(formData);
+		
 		fetch('http://localhost:3000/publicHabits', {
 			method: 'POST',
 			headers: {
@@ -35,16 +35,16 @@ const AddHabits = () => {
 			body: JSON.stringify(formData),
 		})
 			.then(res => res.json())
-			.then(data => {
-				console.log(data);
+			.then(() => {
+				
 				Swal.fire({
 					title: 'Habit added successfully',
 					icon: 'success',
 					draggable: true,
 				});
 			})
-			.catch(err => {
-				console.log(err);
+			.catch(() => {
+				
 				
 			});
 	};

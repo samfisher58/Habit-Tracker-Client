@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router';
 
 import Loading from '../Loading/Loading';
 import { AuthContext } from '../../Context/AuthContext';
-import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
 
 const UpdateHabits = () => {
     const [habits, setHabits]  = useState(null);
@@ -19,10 +19,6 @@ const UpdateHabits = () => {
     if(!habits){
         return <Loading></Loading>
     }
-
-    console.log(habits);
-
-
     const handleSubmit = e => {
 		e.preventDefault();
 		const formData = {
@@ -51,13 +47,13 @@ const UpdateHabits = () => {
 					body: JSON.stringify(formData),
 				})
 					.then(res => res.json())
-					.then(data => {
-						console.log(data);
-						alert('successful');
+					.then(() => {
+						
+						toast.success('successful');
                         navigate('/myHabits');
 					})
-					.catch(err => {
-						console.log(err);
+					.catch(() => {
+						
 					});
             };
 

@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router';
+import { toast } from 'react-toastify';
 
 const HabitDetails = () => {
 	const habit = useLoaderData();
-	console.log(habit);
+	
 	const { title, description, image, category, user, progress } = habit;
 	const totalDays = 30;
 	const completedDays = progress.completionHistory.length;
@@ -20,7 +21,8 @@ const HabitDetails = () => {
 				}
 			);
 			const data = await res.json();
-			alert(data.message || 'Completed!');
+			
+			toast.success(data.message || 'Habit completed!');
 		};
 	return (
 		<div className=" bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">

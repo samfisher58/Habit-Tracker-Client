@@ -17,6 +17,7 @@ import React, { useState, useContext } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 const Login = () => {
 	const [error, setError] = useState('');
@@ -34,7 +35,7 @@ const Login = () => {
 		signInUser(email, password)
 			.then(() => {
 				navigate(location.state ? location.state : '/');
-                alert('Login Successful')
+                toast('Login Successful')
 			})
 			.catch(err => setError(err.code));
 	

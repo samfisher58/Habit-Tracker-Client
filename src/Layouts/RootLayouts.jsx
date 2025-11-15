@@ -3,6 +3,7 @@ import { Outlet,useNavigation } from 'react-router';
 import Navbar from '../Components/Navbar/Navbar';
 import Footer from '../Components/Footer/Footer';
 import Loading from '../Components/Loading/Loading';
+import { ToastContainer } from 'react-toastify';
 
 
 const RootLayouts = () => {
@@ -18,9 +19,8 @@ const RootLayouts = () => {
 				)}
 				<Outlet></Outlet>
 				<Footer></Footer>
-				
 
-				
+				<ToastContainer></ToastContainer>
 			</div>
 		);
 		

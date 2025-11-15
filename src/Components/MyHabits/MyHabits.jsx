@@ -2,6 +2,7 @@ import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router';
+import { toast } from 'react-toastify';
 
 const MyHabits = () => {
 	const { user } = use(AuthContext);
@@ -19,7 +20,7 @@ const MyHabits = () => {
 				setHabits(data);
                 
 			})
-			.catch(err => console.log(err));
+			.catch(() =>{} );
             
 	}, [user?.email]);
     
@@ -43,7 +44,9 @@ const MyHabits = () => {
 						Swal.fire('Deleted!', 'Habit removed successfully.', 'success');
                         
 					})
-					.catch(err => console.log(err));
+					.catch(() =>{
+						toast.error("something went wrong")
+					});
 
                     
 			}
@@ -69,9 +72,9 @@ const MyHabits = () => {
             bestStreak: data.bestStreak,
         }}:habit))
         
-		alert(data.message || 'Completed!');
+		toast(data.message || 'Completed!');
 	};
-    console.log(habits);
+    
 
 	return (
 		<div className="max-w-5xl mx-auto mt-10">

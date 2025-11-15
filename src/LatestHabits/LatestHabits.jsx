@@ -3,7 +3,7 @@ import LatestHabit from './LatestHabit';
 
 const LatestHabits = ({ latestHabitPromise }) => {
 	const latestHabits = use(latestHabitPromise);
-	console.log(latestHabits);
+	
 	return (
 		<div>
 			<h1 className="text-center font-bold text-3xl text-primary">

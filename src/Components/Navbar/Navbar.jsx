@@ -1,17 +1,17 @@
 import React, { use } from 'react';
 import { NavLink } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
-	
-	const {user, logOut} = use(AuthContext);
+	const { user, logOut } = use(AuthContext);
 	const handleLogOut = () => {
 		logOut()
 			.then(() => {
-				alert('logout successful');
+				toast.success('logout successful');
 			})
-			.catch(error => {
-				console.log(error);
+			.catch(() => {
+				toast.error("something went wrong")
 			});
 	};
 
