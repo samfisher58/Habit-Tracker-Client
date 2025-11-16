@@ -13,7 +13,7 @@
 a.active {
   color: white;
   margin-right: 30px;
-  background-color: #0EA5E9; /* Tailwind blue-700 equivalent */
+  background-color: #0EA5E9; 
   padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
   font-weight: 600;

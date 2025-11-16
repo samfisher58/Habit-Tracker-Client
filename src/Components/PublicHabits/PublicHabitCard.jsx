@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 const PublicHabitCard = ({ habit }) => {
 	const { _id, category, image, title, description, user, progress } = habit;
 
-	// Generate avatar URL based on user's name
+	
 	const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(
 		user.name
 	)}&background=0D8ABC&color=fff&rounded=true`;
