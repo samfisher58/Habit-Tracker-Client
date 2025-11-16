@@ -5,7 +5,7 @@ const LatestHabits = ({ latestHabitPromise }) => {
 	const latestHabits = use(latestHabitPromise);
 	
 	return (
-		<div>
+		<div className='my-5'>
 			<h1 className="text-center font-bold text-3xl my-5">
 				<span className="text-primary">Featured</span> <span className='text-secondary' >Habits</span>
 			</h1>

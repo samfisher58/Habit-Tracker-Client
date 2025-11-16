@@ -17,21 +17,19 @@ import AddHabits from './Components/AddHabits/AddHabits.jsx';
 import UpdateHabits from './Components/UpdateHabits/updateHabits.jsx';
 import Errorpage from './Components/Error/Errorpage.jsx';
 
-
-
 const router = createBrowserRouter([
 	{
 		path: '/',
 		Component: RootLayouts,
-		errorElement:<Errorpage></Errorpage>,
+		errorElement: <Errorpage></Errorpage>,
 		children: [
 			{
 				index: true,
 				Component: Home,
 			},
 			{
-				path: 'myHabits',
-				
+				path: '/myHabits',
+
 				element: (
 					<PrivateRoute>
 						<MyHabits></MyHabits>
@@ -39,8 +37,8 @@ const router = createBrowserRouter([
 				),
 			},
 			{
-				path: 'addHabits',
-				
+				path: '/addHabits',
+
 				element: (
 					<PrivateRoute>
 						<AddHabits></AddHabits>
@@ -48,19 +46,19 @@ const router = createBrowserRouter([
 				),
 			},
 			{
-				path: 'publicHabits',
+				path: '/publicHabits',
 				Component: PublicHabit,
 			},
 			{
-				path: 'auth/register',
+				path: '/auth/register',
 				Component: Register,
 			},
 			{
-				path: 'auth/login',
+				path: '/auth/login',
 				Component: Login,
 			},
 			{
-				path: 'habitDetails/:id',
+				path: '/habitDetails/:id',
 				loader: ({ params }) =>
 					fetch(`http://localhost:3000/habits/${params.id}`),
 				element: (
@@ -70,7 +68,7 @@ const router = createBrowserRouter([
 				),
 			},
 			{
-				path: 'publicHabit/:id',
+				path: '/publicHabit/:id',
 				loader: ({ params }) =>
 					fetch(`http://localhost:3000/publicHabits/${params.id}`),
 				element: (
@@ -80,7 +78,7 @@ const router = createBrowserRouter([
 				),
 			},
 			{
-				path: 'myHabits/update-habits/:id',
+				path: '/myHabits/update-habits/:id',
 				loader: ({ params }) =>
 					fetch(`http://localhost:3000/publicHabits/${params.id}`),
 				element: (
@@ -90,7 +88,6 @@ const router = createBrowserRouter([
 				),
 			},
 		],
-		
 	},
 ]);
 

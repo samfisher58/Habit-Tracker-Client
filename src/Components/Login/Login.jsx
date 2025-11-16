@@ -1,18 +1,3 @@
-// import React from 'react';
-// import { NavLink } from 'react-router';
-
-// const Login = () => {
-//     return (
-// 			<div>
-// 				this is from login
-// 				<NavLink to="/auth/register">Register</NavLink>
-// 			</div>
-// 		);
-// };
-
-// export default Login;
-
-
 import React, { useState, useContext } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';

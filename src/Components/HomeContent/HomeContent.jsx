@@ -5,6 +5,7 @@ import { Typewriter } from 'react-simple-typewriter';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
+
 const HomeContent = () => {
 	// Hero Slider settings
 	const sliderSettings = {
@@ -17,6 +18,7 @@ const HomeContent = () => {
 		autoplaySpeed: 5000,
 	};
 
+	
 	const heroSlides = [
 		{
 			title: 'Build Better Habits',
@@ -34,7 +36,7 @@ const HomeContent = () => {
 			src: 'https://i.ibb.co.com/3m4QQfXd/christin-hume-k2-Kcwkandwg-unsplash.jpg',
 		},
 	];
-
+	
 	const benefits = [
 		{
 			title: 'Better Focus',
