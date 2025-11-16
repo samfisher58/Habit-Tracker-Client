@@ -10,10 +10,13 @@ const PublicHabitDetails = () => {
 	const progressPercent = Math.min((completedDays / totalDays) * 100, 100);
 
 	const handleComplete = async () => {
-		const res = await fetch(`http://localhost:3000/habits/${_id}/complete`, {
-			method: 'PATCH',
-			headers: { 'Content-Type': 'application/json' },
-		});
+		const res = await fetch(
+			`https://habit-tracker-server-api.vercel.app/habits/${_id}/complete`,
+			{
+				method: 'PATCH',
+				headers: { 'Content-Type': 'application/json' },
+			}
+		);
 		const data = await res.json();
 		toast.success(data.message || 'Habit completed!');
 	};
@@ -94,4 +97,3 @@ const PublicHabitDetails = () => {
 };
 
 export default PublicHabitDetails;
-

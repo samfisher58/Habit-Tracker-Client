@@ -12,7 +12,7 @@ const UpdateHabits = () => {
 
     const { id } = useParams();
     useEffect(()=>{
-        fetch(`http://localhost:3000/publicHabits/${id}`)
+        fetch(`https://habit-tracker-server-api.vercel.app/publicHabits/${id}`)
 					.then(res => res.json())
 					.then(data => setHabits(data));
     },[id])
@@ -39,7 +39,7 @@ const UpdateHabits = () => {
 				bestStreak: 0,
 			},
 		};
-        fetch(`http://localhost:3000/publicHabits/${id}`, {
+        fetch(`https://habit-tracker-server-api.vercel.app/publicHabits/${id}`, {
 					method: 'PUT',
 					headers: {
 						'Content-type': 'application/json',
@@ -95,10 +95,16 @@ const UpdateHabits = () => {
 							className="select select-bordered w-full"
 						>
 							<option>{habits.category}</option>
-							<option>Morning</option>
-							<option>Work</option>
+							<option>Hobby</option>
+							<option>Education</option>
+							<option>Nutrition</option>
 							<option>Fitness</option>
-							<option>Evening</option>
+							<option>Health</option>
+							<option>Mindfulness</option>
+							<option>Lifestyle</option>
+							<option>Productivity</option>
+							<option>Personal Growth</option>
+							<option>Work</option>
 							<option>Study</option>
 						</select>
 					</div>

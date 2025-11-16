@@ -18,7 +18,6 @@ const Register = () => {
 	const handleGoogleSignIn = () => {
 		signInWithGoogle()
 			.then(result => {
-				
 				toast('Account created!');
 				navigate('/');
 				const newUser = {
@@ -27,7 +26,7 @@ const Register = () => {
 					image: result.user.photoURL,
 				};
 				// create user n db
-				fetch('http://localhost:3000/users', {
+				fetch('https://habit-tracker-server-api.vercel.app/users', {
 					method: 'POST',
 					headers: {
 						'content-type': 'application/json',
@@ -35,12 +34,9 @@ const Register = () => {
 					body: JSON.stringify(newUser),
 				})
 					.then(res => res.json())
-					.then(() => {						
-					});
+					.then(() => {});
 			})
-			.catch(() => {
-				
-			});
+			.catch(() => {});
 	};
 
 	const handleRegister = e => {
@@ -68,7 +64,7 @@ const Register = () => {
 							email: email,
 							image: photo,
 						};
-						fetch('http://localhost:3000/users', {
+						fetch('https://habit-tracker-server-api.vercel.app/users', {
 							method: 'POST',
 							headers: {
 								'content-type': 'application/json',
@@ -76,13 +72,11 @@ const Register = () => {
 							body: JSON.stringify(newUser),
 						})
 							.then(res => res.json())
-							.then(() => {
-								
-							});
+							.then(() => {});
 						toast.success('Account created!');
 						navigate('/');
 					})
-					.catch(() => {						
+					.catch(() => {
 						setUser(user);
 						toast.error('Failed to update profile info');
 					});

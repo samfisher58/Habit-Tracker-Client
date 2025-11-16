@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 
 const AddHabits = () => {
 	const { user } = use(AuthContext);
-	
+
 	const handleSubmit = e => {
 		e.preventDefault();
 		const formData = {
@@ -26,8 +26,8 @@ const AddHabits = () => {
 				bestStreak: 0,
 			},
 		};
-		
-		fetch('http://localhost:3000/publicHabits', {
+
+		fetch('https://habit-tracker-server-api.vercel.app/publicHabits', {
 			method: 'POST',
 			headers: {
 				'Content-type': 'application/json',
@@ -36,17 +36,13 @@ const AddHabits = () => {
 		})
 			.then(res => res.json())
 			.then(() => {
-				
 				Swal.fire({
 					title: 'Habit added successfully',
 					icon: 'success',
 					draggable: true,
 				});
 			})
-			.catch(() => {
-				
-				
-			});
+			.catch(() => {});
 	};
 
 	return (
@@ -85,13 +81,17 @@ const AddHabits = () => {
 						required
 						className="select select-bordered w-full"
 					>
-						<option >
-							Select a category
-						</option>
-						<option>Morning</option>
-						<option>Work</option>
+						<option>Select a category</option>
+						<option>Hobby</option>
+						<option>Education</option>
+						<option>Nutrition</option>
 						<option>Fitness</option>
-						<option>Evening</option>
+						<option>Health</option>
+						<option>Mindfulness</option>
+						<option>Lifestyle</option>
+						<option>Productivity</option>
+						<option>Personal Growth</option>
+						<option>Work</option>
 						<option>Study</option>
 					</select>
 				</div>
@@ -139,7 +139,6 @@ const AddHabits = () => {
 							name="email"
 							defaultValue={user.email}
 							className="input input-bordered w-full bg-gray-100"
-							
 						/>
 					</div>
 				</div>

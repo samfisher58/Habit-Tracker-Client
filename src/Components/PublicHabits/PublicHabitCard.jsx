@@ -10,6 +10,7 @@ const PublicHabitCard = ({ habit }) => {
 	)}&background=0D8ABC&color=fff&rounded=true`;
 
 	return (
+		
 		<div className="card w-full max-w-md mx-auto bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
 			<figure className="relative">
 				<img

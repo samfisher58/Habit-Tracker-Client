@@ -60,7 +60,9 @@ const router = createBrowserRouter([
 			{
 				path: '/habitDetails/:id',
 				loader: ({ params }) =>
-					fetch(`http://localhost:3000/habits/${params.id}`),
+					fetch(
+						`https://habit-tracker-server-api.vercel.app/habits/${params.id}`
+					),
 				element: (
 					<PrivateRoute>
 						<HabitDetails></HabitDetails>
@@ -70,7 +72,9 @@ const router = createBrowserRouter([
 			{
 				path: '/publicHabit/:id',
 				loader: ({ params }) =>
-					fetch(`http://localhost:3000/publicHabits/${params.id}`),
+					fetch(
+						`https://habit-tracker-server-api.vercel.app/publicHabits/${params.id}`
+					),
 				element: (
 					<PrivateRoute>
 						<PublicHabitDetails></PublicHabitDetails>
@@ -80,7 +84,9 @@ const router = createBrowserRouter([
 			{
 				path: '/myHabits/update-habits/:id',
 				loader: ({ params }) =>
-					fetch(`http://localhost:3000/publicHabits/${params.id}`),
+					fetch(
+						`https://habit-tracker-server-api.vercel.app/publicHabits/${params.id}`
+					),
 				element: (
 					<PrivateRoute>
 						<UpdateHabits></UpdateHabits>

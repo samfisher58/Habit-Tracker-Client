@@ -7,25 +7,21 @@ import { toast } from 'react-toastify';
 const MyHabits = () => {
 	const { user } = use(AuthContext);
 	const [habits, setHabits] = useState([]);
-    
-    
 
-	
 	useEffect(() => {
 		if (!user?.email) return;
 
-		fetch(`http://localhost:3000/my-habit?email=${user.email}`)
+		fetch(
+			`https://habit-tracker-server-api.vercel.app/my-habit?email=${user.email}`
+		)
 			.then(res => res.json())
 			.then(data => {
 				setHabits(data);
-                
 			})
-			.catch(() =>{} );
-            
+			.catch(() => {});
 	}, [user?.email]);
-    
 
-	const handleDelete = (id) => {
+	const handleDelete = id => {
 		Swal.fire({
 			title: 'Are you sure?',
 			text: 'This habit will be permanently deleted!',
@@ -35,46 +31,48 @@ const MyHabits = () => {
 			cancelButtonText: 'Cancel',
 		}).then(result => {
 			if (result.isConfirmed) {
-				fetch(`http://localhost:3000/my-habit/${id}`, {
+				fetch(`https://habit-tracker-server-api.vercel.app/my-habit/${id}`, {
 					method: 'DELETE',
 				})
 					.then(res => res.json())
 					.then(() => {
-                        setHabits( habits.filter(habit=>habit._id !== id));
+						setHabits(habits.filter(habit => habit._id !== id));
 						Swal.fire('Deleted!', 'Habit removed successfully.', 'success');
-                        
 					})
-					.catch(() =>{
-						toast.error("something went wrong")
+					.catch(() => {
+						toast.error('something went wrong');
 					});
-
-                    
 			}
 		});
 	};
 
-	
-	const handleComplete = async (id) => {
+	const handleComplete = async id => {
 		const res = await fetch(
-			`http://localhost:3000/habits/${id}/complete`,
+			`https://habit-tracker-server-api.vercel.app/habits/${id}/complete`,
 			{
 				method: 'PATCH',
 				headers: { 'Content-Type': 'application/json' },
 			}
 		);
 		const data = await res.json();
-        setHabits(habits.map(habit=>habit._id==id?{
-            ...habit,
-          progress: {
-            ...habit.progress,
-            completionHistory: data.completionHistory,
-            currentStreak: data.currentStreak,
-            bestStreak: data.bestStreak,
-        }}:habit))
-        
+		setHabits(
+			habits.map(habit =>
+				habit._id == id
+					? {
+							...habit,
+							progress: {
+								...habit.progress,
+								completionHistory: data.completionHistory,
+								currentStreak: data.currentStreak,
+								bestStreak: data.bestStreak,
+							},
+					  }
+					: habit
+			)
+		);
+
 		toast(data.message || 'Completed!');
 	};
-    
 
 	return (
 		<div className="max-w-5xl mx-auto mt-10">
@@ -104,7 +102,10 @@ const MyHabits = () => {
 									<div className="flex justify-end gap-3">
 										{/* Update Button */}
 										{/* <button className="btn btn-sm btn-info">Update</button> */}
-										<Link  to={`/myHabits/update-habits/${habit._id}`} className='btn btn-sm btn-primary'>
+										<Link
+											to={`/myHabits/update-habits/${habit._id}`}
+											className="btn btn-sm btn-primary"
+										>
 											Update Habits
 										</Link>
 

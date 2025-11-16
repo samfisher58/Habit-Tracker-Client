@@ -12,7 +12,7 @@ const HabitDetails = () => {
 
 	const handleComplete = async () => {
 		const res = await fetch(
-			`http://localhost:3000/habits/${habit._id}/complete`,
+			`https://habit-tracker-server-api.vercel.app/habits/${habit._id}/complete`,
 			{
 				method: 'PATCH',
 				headers: { 'Content-Type': 'application/json' },
